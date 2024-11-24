@@ -58,4 +58,6 @@ web-application-framework/
 ├── .env                  # Configurações de ambiente
 ├── package.json          # Dependências e scripts
 ├── README.md             # Documentação
-└── api_log_<data>.log    # Logs gerados pelo script de teste
+└── test
+    └── test-api.sh # Rotina de teste da API
+    └── api_log_<data>.log    # Logs gerados pelo script de teste
