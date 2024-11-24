@@ -2,8 +2,7 @@
 
 **Versão:** 1.0.0  
 **Autor:** Wellington Wagner F. Sarmento  
-**Licença:** GPL-3.0-or-later  
-
+**Licença:** [GPV Version 3](LICENSE)
 
 
 ## Descrição
@@ -12,14 +11,12 @@
 Esta aplicação fornece uma base para gerenciamento de usuários e objetos, com funcionalidades de autenticação, cadastro e CRUD, utilizando tecnologias modernas e boas práticas de desenvolvimento.
 
 
-
 ## Funcionalidades
 - **Gerenciamento de Usuários**: Registro e autenticação com hashing de senha.
 - **Gerenciamento de Objetos**: CRUD (Create, Read, Update, Delete) de objetos vinculados a usuários.
 - **Autenticação JWT**: Segurança na comunicação via tokens.
 - **API Restful**: Backend estruturado para comunicação com frontend.
 - **Frontend básico**: Interface construída com HTML5, CSS e JavaScript.
-
 
 
 ## Tecnologias Utilizadas
@@ -37,7 +34,6 @@ Esta aplicação fornece uma base para gerenciamento de usuários e objetos, com
   - [Nodemon](https://nodemon.io/)
   - [Dotenv](https://github.com/motdotla/dotenv)
   - [CORS](https://github.com/expressjs/cors)
-
 
 
 ## Estrutura de Pastas
@@ -58,6 +54,70 @@ web-application-framework/
 ├── .env                  # Configurações de ambiente
 ├── package.json          # Dependências e scripts
 ├── README.md             # Documentação
-└── test
-    └── test-api.sh # Rotina de teste da API
-    └── api_log_<data>.log    # Logs gerados pelo script de teste
+└── test/
+    ├── test-api.sh       # Rotina de teste da API
+    └── api_log_<data>.log # Logs gerados pelo script de teste
+```
+
+ 
+## Configuração do `.env`
+
+Para que a aplicação funcione corretamente, é necessário criar um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
+
+```plaintext
+# String de conexão com o banco de dados PostgreSQL
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco"
+
+# Chave secreta para geração e verificação de tokens JWT
+JWT_SECRET="sua_chave_secreta_aqui"
+```
+
+### **Exemplo:**
+```plaintext
+# String de conexão com o banco de dados PostgreSQL
+DATABASE_URL="postgresql://dbuser:password123@localhost:5432/mydatabase"
+
+# Chave secreta para geração e verificação de tokens JWT
+JWT_SECRET="mysecretkey"
+```
+
+ 
+
+### Como configurar:
+1. Substitua `dbuser`, `password123` e `mydatabase` pelos dados reais de acesso ao seu banco de dados PostgreSQL.
+2. Defina `JWT_SECRET` com uma chave secreta forte. Esta chave é usada para proteger os tokens JWT gerados pela aplicação.
+
+
+## Instalação e Configuração
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/web-application-framework.git
+   cd web-application-framework
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Configure o arquivo `.env` conforme explicado acima.
+
+4. Configure o banco de dados:
+   - Crie a base de dados no PostgreSQL:
+     ```sql
+     CREATE DATABASE nome_do_banco TEMPLATE template0;
+     ```
+   - Execute as migrações do Prisma:
+     ```bash
+     npx prisma migrate dev --name init
+     ```
+
+5. Inicie o servidor:
+   ```bash
+   npm run dev
+   ```
+
+6. Acesse a aplicação:
+   - Frontend: [http://localhost:3000](http://localhost:3000)
+   - API: [http://localhost:3000/users](http://localhost:3000/users)
